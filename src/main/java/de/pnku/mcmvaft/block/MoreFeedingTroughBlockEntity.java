@@ -104,18 +104,16 @@ public class MoreFeedingTroughBlockEntity extends BlockEntity implements MenuPro
         return inventory;
     }
 
-    @Override
-    protected void loadAdditional(CompoundTag nbt, HolderLookup.Provider registryLookup) {
-        super.loadAdditional(nbt, registryLookup);
-        ContainerHelper.loadAllItems(nbt, this.inventory, registryLookup);
-        this.storedExp = nbt.getInt(NBT_STORED_EXP);
+    public void load(CompoundTag tag) {
+        super.load(tag);
+        ContainerHelper.loadAllItems(tag, this.inventory);
+        this.storedExp = tag.getInt("StoredExp");
     }
 
-    @Override
-    protected void saveAdditional(CompoundTag nbt, HolderLookup.Provider registryLookup) {
-        super.saveAdditional(nbt, registryLookup);
-        ContainerHelper.saveAllItems(nbt, this.inventory, registryLookup);
-        nbt.putInt(NBT_STORED_EXP, this.storedExp);
+    public void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
+        ContainerHelper.saveAllItems(tag, this.inventory);
+        tag.putInt("StoredExp", this.storedExp);
     }
 
 }

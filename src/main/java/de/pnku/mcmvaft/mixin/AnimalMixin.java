@@ -45,7 +45,7 @@ public class AnimalMixin extends Mob {
                     TemptGoal goal = (TemptGoal)prioritizedGoal.getGoal();
                     PathfinderMob mob = ((TemptGoalAccessor)goal).getMob();
                     double speed = ((TemptGoalAccessor)goal).getSpeed();
-                    Predicate<ItemStack> foodPredicate = ((TemptGoalAccessor)goal).getFoodPredicate();
+                    Predicate<ItemStack> foodPredicate = ((TemptGoalAccessor)goal).getFood();
                     boolean hasForbiddenFood = false;
                     ItemStack[] var8 = FORBIDDEN_ITEMS;
                     int var9 = var8.length;

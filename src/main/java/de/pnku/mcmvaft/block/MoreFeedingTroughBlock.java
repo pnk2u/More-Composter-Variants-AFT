@@ -1,16 +1,14 @@
 package de.pnku.mcmvaft.block;
 
 import com.mojang.serialization.MapCodec;
-import de.pnku.mcmvaft.MoreFeedingTroughVariants;
 import de.pnku.mcmvaft.init.McmvaftBlockInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -26,9 +24,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-import slexom.animal_feeding_trough.platform.common.AnimalFeedingTroughMod;
 import slexom.animal_feeding_trough.platform.common.block.FeedingTroughBlock;
-import slexom.animal_feeding_trough.platform.common.block.entity.FeedingTroughBlockEntity;
 
 public class MoreFeedingTroughBlock extends FeedingTroughBlock {
     public final String feedingTroughWoodType;
@@ -64,17 +60,23 @@ public class MoreFeedingTroughBlock extends FeedingTroughBlock {
         return RenderShape.MODEL;
     }
 
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof MoreFeedingTroughBlockEntity moreFeedingTroughBlockEntity) {
+    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (!world.isClientSide) {
             if (player.isShiftKeyDown() && player.getItemInHand(hand).isEmpty()) {
-                moreFeedingTroughBlockEntity.dropStoredXp(world, player);
-
-                return ItemInteractionResult.sidedSuccess(world.isClientSide);
+                BlockEntity blockEntity = world.getBlockEntity(pos);
+                if (blockEntity instanceof MoreFeedingTroughBlockEntity) {
+                    MoreFeedingTroughBlockEntity moreFeedingTroughBlockEntity = (MoreFeedingTroughBlockEntity)blockEntity;
+                    moreFeedingTroughBlockEntity.dropStoredXp(world, player);
+                }
+            } else {
+                MenuProvider screenHandlerFactory = state.getMenuProvider(world, pos);
+                if (screenHandlerFactory != null) {
+                    player.openMenu(screenHandlerFactory);
+                }
             }
         }
 
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        return InteractionResult.SUCCESS;
     }
 
     public InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
