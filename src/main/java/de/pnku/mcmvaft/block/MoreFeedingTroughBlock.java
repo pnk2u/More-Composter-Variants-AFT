@@ -42,10 +42,6 @@ public class MoreFeedingTroughBlock extends FeedingTroughBlock {
         this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, 0));
     }
 
-    public MapCodec<FeedingTroughBlock> getCodec() {
-        return CODEC;
-    }
-
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> stateManager) {
         stateManager.add(LEVEL);
