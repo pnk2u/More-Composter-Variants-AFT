@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "group": "feeding_trough",
   "key": {
     "#": {
       "item": "minecraft:dark_oak_slab"
