@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "feeding_trough",
   "key": {
-    "#": {
-      "item": "minecraft:warped_slab"
-    }
+    "#": "minecraft:warped_slab"
         },
   "pattern":  [
   "# #",

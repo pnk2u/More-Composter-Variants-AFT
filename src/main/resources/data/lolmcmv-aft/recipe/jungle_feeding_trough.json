@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "feeding_trough",
   "key": {
-    "#": {
-      "item": "minecraft:jungle_slab"
-    }
+    "#": "minecraft:jungle_slab"
         },
   "pattern":  [
   "# #",

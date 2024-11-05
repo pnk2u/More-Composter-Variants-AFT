@@ -3,6 +3,8 @@ package de.pnku.mcmvaft.init;
 import de.pnku.mcmvaft.MoreFeedingTroughVariants;
 import de.pnku.mcmvaft.block.MoreFeedingTroughBlock;
 import de.pnku.mcmvaft.block.MoreFeedingTroughBlockEntity;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityType;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
@@ -47,7 +49,7 @@ public class McmvaftBlockInit {
         registerBlock(CRIMSON_FEEDING_TROUGH_BLOCK);
         registerBlock(WARPED_FEEDING_TROUGH_BLOCK);
 
-        MORE_FEEDING_TROUGH_BLOCK_ENTITY = Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, asId("variant_feeding_troughs"), BlockEntityType.Builder.of(MoreFeedingTroughBlockEntity::new, McmvaftBlockInit.more_feeding_troughs.toArray(Block[]::new)).build(null));
+        MORE_FEEDING_TROUGH_BLOCK_ENTITY = Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, asId("variant_feeding_troughs"), FabricBlockEntityTypeBuilder.create(MoreFeedingTroughBlockEntity::new, McmvaftBlockInit.more_feeding_troughs.toArray(Block[]::new)).build(null));
 
     }
 
