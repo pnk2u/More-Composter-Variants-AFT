@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "feeding_trough",
   "key": {
-    "#": {
-      "item": "minecraft:oak_slab"
-    }
+    "#": "minecraft:oak_slab"
         },
   "pattern":  [
   "# #",

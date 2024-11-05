@@ -4,10 +4,11 @@ import com.mojang.serialization.MapCodec;
 import de.pnku.mcmvaft.MoreFeedingTroughVariants;
 import de.pnku.mcmvaft.init.McmvaftBlockInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
@@ -35,13 +36,13 @@ public class MoreFeedingTroughBlock extends FeedingTroughBlock {
     private static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D);
 
     public MoreFeedingTroughBlock(MapColor colour, String feedingTroughWoodType) {
-        super(BlockBehaviour.Properties.of().mapColor(colour).instrument(NoteBlockInstrument.BASS).strength(0.2f).sound(SoundType.WOOD).ignitedByLava().noOcclusion());
+        super(BlockBehaviour.Properties.of().mapColor(colour).instrument(NoteBlockInstrument.BASS).strength(0.2f).sound(SoundType.WOOD).ignitedByLava().noOcclusion().setId(ResourceKey.create(Registries.BLOCK, MoreFeedingTroughVariants.asId(feedingTroughWoodType + "_feeding_trough"))));
         this.feedingTroughWoodType = feedingTroughWoodType;
         this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, 0));
     }
 
     public MoreFeedingTroughBlock(MapColor colour, SoundType sound, String feedingTroughWoodType) {
-        super(BlockBehaviour.Properties.of().mapColor(colour).instrument(NoteBlockInstrument.BASS).strength(0.2f).sound(sound).ignitedByLava().noOcclusion());
+        super(BlockBehaviour.Properties.of().mapColor(colour).instrument(NoteBlockInstrument.BASS).strength(0.2f).sound(sound).ignitedByLava().noOcclusion().setId(ResourceKey.create(Registries.BLOCK, MoreFeedingTroughVariants.asId(feedingTroughWoodType + "_feeding_trough"))));
         this.feedingTroughWoodType = feedingTroughWoodType;
         this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, 0));
     }
@@ -64,17 +65,17 @@ public class MoreFeedingTroughBlock extends FeedingTroughBlock {
         return RenderShape.MODEL;
     }
 
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof MoreFeedingTroughBlockEntity moreFeedingTroughBlockEntity) {
             if (player.isShiftKeyDown() && player.getItemInHand(hand).isEmpty()) {
                 moreFeedingTroughBlockEntity.dropStoredXp(world, player);
 
-                return ItemInteractionResult.sidedSuccess(world.isClientSide);
+                return InteractionResult.SUCCESS;
             }
         }
 
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        return InteractionResult.TRY_WITH_EMPTY_HAND;
     }
 
     public InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {

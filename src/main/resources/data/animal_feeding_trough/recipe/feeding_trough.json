@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "tag": "lolmcmv-aft:feedingtroughvariants"
-    }
+    "#lolmcmv-aft:feedingtroughvariants"
   ],
   "result": {
     "id": "animal_feeding_trough:feeding_trough"

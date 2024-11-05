@@ -8,9 +8,7 @@
     "###"
   ],
   "key": {
-    "#": {
-      "item": "minecraft:acacia_slab"
-    }
+    "#": "minecraft:acacia_slab"
   },
   "result": {
     "id": "lolmcmv-aft:acacia_feeding_trough"
