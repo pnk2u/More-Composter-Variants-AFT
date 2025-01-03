@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.6-SNAPSHOT'
+	id 'fabric-loom' version '1.9-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -16,6 +16,12 @@ repositories {
 		url = 'https://maven.parchmentmc.org'
 	}
 	maven { url "https://maven.architectury.dev/" }
+	maven {
+		url "https://www.cursemaven.com"
+		content {
+			includeGroup "curse.maven"
+		}
+	}
 }
 
 
@@ -26,18 +32,18 @@ dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings loom.layered() {
 		officialMojangMappings()
-		parchment("org.parchmentmc.data:parchment-${project.minecraft_version}:${project.parchment_date}@zip")
+		parchment("org.parchmentmc.data:parchment-${project.p_mc_version}:${project.parchment_date}@zip")
 	}
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// MCMV
-	modCompileOnly files("local-res/MoreComposterVariants-${project.mcmv_version}+${project.minecraft_version}-Fabric.jar")
+	modCompileOnly  "curse.maven:more-composter-variants-1058421:${project.mcmv_version_id}"
 
 	// AFT
 	modApi "dev.architectury:architectury-fabric:${project.architectury_api_version}"
-	modCompileOnly files("local-res/animal_feeding_trough-${project.aft_version}+${project.minecraft_version}.jar")
+	modCompileOnly "curse.maven:animal-feeding-trough-445838:${project.aft_version_id}"
 }
 
 processResources {
