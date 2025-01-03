@@ -20,6 +20,7 @@ public class McmvaftItemInit {
     public static final BlockItem JUNGLE_FEEDING_TROUGH_ITEM = itemFromBlock(McmvaftBlockInit.JUNGLE_FEEDING_TROUGH_BLOCK);
     public static final BlockItem ACACIA_FEEDING_TROUGH_ITEM = itemFromBlock(McmvaftBlockInit.ACACIA_FEEDING_TROUGH_BLOCK);
     public static final BlockItem DARK_OAK_FEEDING_TROUGH_ITEM = itemFromBlock(McmvaftBlockInit.DARK_OAK_FEEDING_TROUGH_BLOCK);
+    public static final BlockItem PALE_OAK_FEEDING_TROUGH_ITEM = itemFromBlock(McmvaftBlockInit.PALE_OAK_FEEDING_TROUGH_BLOCK);
     public static final BlockItem MANGROVE_FEEDING_TROUGH_ITEM = itemFromBlock(McmvaftBlockInit.MANGROVE_FEEDING_TROUGH_BLOCK);
     public static final BlockItem CHERRY_FEEDING_TROUGH_ITEM = itemFromBlock(McmvaftBlockInit.CHERRY_FEEDING_TROUGH_BLOCK);
     public static final BlockItem BAMBOO_FEEDING_TROUGH_ITEM = itemFromBlock(McmvaftBlockInit.BAMBOO_FEEDING_TROUGH_BLOCK);
@@ -43,7 +44,8 @@ public class McmvaftItemInit {
         registerItem(JUNGLE_FEEDING_TROUGH_ITEM, BIRCH_FEEDING_TROUGH_ITEM);
         registerItem(ACACIA_FEEDING_TROUGH_ITEM, JUNGLE_FEEDING_TROUGH_ITEM);
         registerItem(DARK_OAK_FEEDING_TROUGH_ITEM, ACACIA_FEEDING_TROUGH_ITEM);
-        registerItem(MANGROVE_FEEDING_TROUGH_ITEM, DARK_OAK_FEEDING_TROUGH_ITEM);
+        registerItem(PALE_OAK_FEEDING_TROUGH_ITEM, DARK_OAK_FEEDING_TROUGH_ITEM);
+        registerItem(MANGROVE_FEEDING_TROUGH_ITEM, PALE_OAK_FEEDING_TROUGH_ITEM);
         registerItem(CHERRY_FEEDING_TROUGH_ITEM, MANGROVE_FEEDING_TROUGH_ITEM);
         registerItem(BAMBOO_FEEDING_TROUGH_ITEM, CHERRY_FEEDING_TROUGH_ITEM);
         registerItem(CRIMSON_FEEDING_TROUGH_ITEM, BAMBOO_FEEDING_TROUGH_ITEM);

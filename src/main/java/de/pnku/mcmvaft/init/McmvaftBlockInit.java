@@ -26,6 +26,7 @@ public class McmvaftBlockInit {
     public static final MoreFeedingTroughBlock JUNGLE_FEEDING_TROUGH_BLOCK = new MoreFeedingTroughBlock(MapColor.DIRT, "jungle");
     public static final MoreFeedingTroughBlock ACACIA_FEEDING_TROUGH_BLOCK = new MoreFeedingTroughBlock(MapColor.COLOR_ORANGE, "acacia");
     public static final MoreFeedingTroughBlock DARK_OAK_FEEDING_TROUGH_BLOCK = new MoreFeedingTroughBlock(MapColor.COLOR_BROWN, "dark_oak");
+    public static final MoreFeedingTroughBlock PALE_OAK_FEEDING_TROUGH_BLOCK = new MoreFeedingTroughBlock(MapColor.QUARTZ, "pale_oak");
     public static final MoreFeedingTroughBlock MANGROVE_FEEDING_TROUGH_BLOCK = new MoreFeedingTroughBlock(MapColor.COLOR_RED, "mangrove");
     public static final MoreFeedingTroughBlock CHERRY_FEEDING_TROUGH_BLOCK = new MoreFeedingTroughBlock(MapColor.TERRACOTTA_WHITE, SoundType.CHERRY_WOOD, "cherry");
     public static final MoreFeedingTroughBlock BAMBOO_FEEDING_TROUGH_BLOCK = new MoreFeedingTroughBlock(MapColor.COLOR_YELLOW, SoundType.BAMBOO_WOOD, "bamboo");
@@ -43,6 +44,7 @@ public class McmvaftBlockInit {
         registerBlock(JUNGLE_FEEDING_TROUGH_BLOCK);
         registerBlock(ACACIA_FEEDING_TROUGH_BLOCK);
         registerBlock(DARK_OAK_FEEDING_TROUGH_BLOCK);
+        registerBlock(PALE_OAK_FEEDING_TROUGH_BLOCK);
         registerBlock(MANGROVE_FEEDING_TROUGH_BLOCK);
         registerBlock(CHERRY_FEEDING_TROUGH_BLOCK);
         registerBlock(BAMBOO_FEEDING_TROUGH_BLOCK);
